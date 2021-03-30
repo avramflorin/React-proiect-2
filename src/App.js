@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route to="/boostratp" component={Bootstrap}></Route>
-        <Route to="*" component={Home}></Route>
+        <Route path="/bootstrap" component={Bootstrap}></Route>
+        <Route path="*" component={Home}></Route>
       </Switch>
     </BrowserRouter>
   );
