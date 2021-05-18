@@ -1,8 +1,15 @@
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
+import './Layout.css';
 
 const Layout = (props) => {
   return (
-    <div>{props.children}</div>
+    <div className="layout">
+      <Header />
+      <div>{props.children}</div>
+      <Footer />
+    </div>
   )
 }
 

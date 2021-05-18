@@ -1,0 +1,10 @@
+header img.logo {
+    width: 130px;
+    height: auto;
+}
+
+/* stilizam logoutul */
+header .logout:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

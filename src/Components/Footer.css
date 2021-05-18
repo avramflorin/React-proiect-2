@@ -1,0 +1,11 @@
+footer svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  footer div:first-child {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,18 +1,60 @@
 import './App.css';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import React from 'react';
 
-import Home from "./Pages/Home";
-import Bootstrap from "./Pages/Bootstrap";
+import {Switch, Route} from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Category from "./pages/Category";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Page404 from "./pages/Page404";
+import TermsConditions from "./pages/TermsConditions";
+import Product from './pages/Product';
+//  import "./utils/utility-classes.css"; // am mutat totul in App.css
 
-function App() {
-  return (
-    <BrowserRouter>
+
+
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    //  console.log("App.jsx", this.props);
+    return (
       <Switch>
-        <Route path="/bootstrap" component={Bootstrap}></Route>
-        <Route path="*" component={Home}></Route>
+        {/* <Route exact path="/" component={Home} /> */}
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/tc" component={TermsConditions} />
+        <Route path="/cart" component={Cart} />
+        {/* <Route path="/login">
+          <Login  signInWithGoogle={this.props.signInWithGoogle} />
+        </Route> */}
+        {/* 
+        // asa se trimit propuri la componnta
+        <Route
+          path='/login'
+          render={
+            (props) => {
+              return <Login {... props} />
+            } 
+          }
+        /> */}
+        <Route path="/login" component={Login} />
+        <Route path="/category/:categoryLabel" component={Category} />
+        <Route path="/product/:productId" component={Product} />
+        <Route path="*" component={Page404} />
       </Switch>
-    </BrowserRouter>
-  );
+    );
+  }
 }
+
+
+
 
 export default App;

@@ -1,45 +1,46 @@
-//  import React from "react";
+import React from 'react';
+import HomeCategory from '../components/HomeCategory';
+import Layout from '../components/Layout';
+import products from '../utils/products.json';
 
-import Button from 'react-bootstrap/Button';
+class Home extends React.Component {
+  constructor () {
+    super();
 
-import Layout from "../Components/Layout";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
+    this.state = {
+      categories: []
+    };
+  }
 
-const Home = () => {
-  // const [show, setShow] = useState(false);
+  componentDidMount() {
+    // salvez cheile ca sa pot parsa object-ul
+    const categories = Object.keys(products);
+    
+    // de observat categories ~ categories: categories (ES6)
+    this.setState({categories});
+  }
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
-  return (
-    <Layout>
-      <Header />
-      <div>
-        <h1>Continut Home</h1>
-        <div class="alert alert-danger" role="alert">
-          <strong>Oh snap!</strong>
-          <a href="#!" class="alert-link">Change a few things up</a>
-          and try submitting again.
+  render() {
+    //console.log("Home.jsx", this.props);
+    return (
+      <Layout>
+        <div className="container-fluid container-min-max-width">
+          <div className="row">
+            {this.state.categories.map((value, key)=>
+              <HomeCategory 
+                key={key}
+                route={value}
+                title={products[value].name}
+                description={products[value].description}
+                image={products[value].image}
+              />
+            )}
+          </div>
         </div>
-
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-info">Primary</button>
-
-        <Button variant="primary" >
-          Launch demo modal
-        </Button>
-        <Button variant="info" >
-          Launch demo modal
-        </Button>
-
-        
-        
-        
-      </div>
-      <Footer />
-    </Layout>
-  )
+      </Layout>
+    )
+  }
 }
+
 
 export default Home;
