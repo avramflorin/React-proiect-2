@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // importam componente noi
-import Logo from '../assets/logo/logo.png';
-import { ReactComponent as Google } from '../assets/icons/google.svg';
-//import { ReactComponent as Facebook } from '../assets/icons/facebook.svg';
+import Logo from '../../assets/logo/logo.png';
+import { ReactComponent as Google } from '../../assets/icons/google.svg';
+import { ReactComponent as Facebook } from '../../assets/icons/facebook.svg';
 import './Login.css'
 
-import {signInWithGooleAction} from '../redux/actions/user';
+import {signInWithGooleAction, signInWithFbAction} from '../../redux/User/Actions';
 
 import { connect } from 'react-redux';
 // Importam actiunea loginUser, care se va ocupa le loginul userului(request asincron)
@@ -24,7 +24,7 @@ class Login extends React.Component {
     this.state = {};
 
     this.handleGoogleLogin = this.handleGoogleLogin.bind(this);
-    //this.handleFacebookLogin = this.handleFacebookLogin.bind(this);
+    this.handleFacebookLogin = this.handleFacebookLogin.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -34,14 +34,16 @@ class Login extends React.Component {
 
   }
   
-  // handleFacebookLogin() {
-  //   console.log("handleFacebookLogin", this.props.signInWithFacebook);
+  handleFacebookLogin() {
+    //  console.log('autentificare fb');
+    this.props.signInWithFbWithDispatch();
+    //  console.log("handleFacebookLogin", this.props.signInWithFacebook);
 
-  //   const {signInWithFacebook, history} = this.props;
-  //   signInWithFacebook();
-  //   history.push('/');
+    //const {signInWithFacebook, history} = this.props;
+    //signInWithFacebook();
+    //history.push('/');
     
-  // }
+  }
 
   handleGoogleLogin() {
     this.props.signInWithGooleWithDispatch();
@@ -55,10 +57,10 @@ class Login extends React.Component {
           <img src={Logo} alt="logo" className="mb-5"/>
         </Link>
         <h1 className="h4 mb-4">Choose your destiny</h1>
-        {/* <button onClick={this.handleFacebookLogin} className="mb-4 btn btn-outline-dark d-flex align-items-center">
+        <button onClick={this.handleFacebookLogin} className="mb-4 btn btn-outline-dark d-flex align-items-center">
           <Facebook className="mr-4" />
           <span className="text-nowrap">Loghează-te cu Facebook</span>
-        </button> */}
+        </button>
         <button onClick={this.handleGoogleLogin} className="btn btn-outline-dark d-flex align-items-center">
           <Google className="mr-4"/>
           <span className="text-nowrap">Loghează-te cu Google</span>
@@ -86,7 +88,8 @@ const mapStateToProps = (state) => {
 // loginUser catre store.
 const mapDispatchToProps = (dispatch) => {
   return {
-    signInWithGooleWithDispatch: () => dispatch(signInWithGooleAction())
+    signInWithGooleWithDispatch: () => dispatch(signInWithGooleAction()),
+    signInWithFbWithDispatch: () => dispatch(signInWithFbAction())
   }
 }
 

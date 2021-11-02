@@ -2,11 +2,12 @@ import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 
-import logo from '../assets/logo/logo.png';
+import logo from '../../assets/logo/logo.png';
 import './Header.css';
-import {ReactComponent as ShoppingCart } from '../assets/icons/shopping-cart.svg';
+import {ReactComponent as ShoppingCart } from '../../assets/icons/shopping-cart.svg';
+import {ReactComponent as Favorite } from '../../assets/icons/favorite.svg';
 
-import {signOutAction} from '../redux/actions/user';
+import {signOutAction} from '../../redux/User/Actions';
 
 
 const Header = (props) => {
@@ -30,6 +31,8 @@ const Header = (props) => {
             }
             <Link to="/cart"><ShoppingCart className="ml-2"/></Link>
             <p className="ml-1 mb-0">{ props.numberOfProducts }</p>
+            <Link to="/favorites"><Favorite className="ml-2"/></Link>
+            <p className="ml-1 mb-0">{ props.numberOfFavorites }</p>
           </div>
         </div>
       </div>
@@ -40,11 +43,13 @@ const Header = (props) => {
 
 function mapStateToProps(state) {
   let numberOfProducts = 0;
+  
   state.cart.products.map(value=> numberOfProducts += value.cantitate);
-
+  
   return {
     user: state.user.data,
-    numberOfProducts
+    numberOfProducts,
+    numberOfFavorites: Object.keys(state.favorites).length
   }
 }
 

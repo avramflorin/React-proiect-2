@@ -10,6 +10,8 @@ firebase.initializeApp(firebaseConfig);
 // nu ca array.
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
 // exportam metodele pe care dorim sa le folosim in alte componente
 export const signOut = function() {
   // firebase.auth() este biblioteca din firebase care ne pune la dispozitie
@@ -17,9 +19,19 @@ export const signOut = function() {
   return firebase.auth().signOut();
 }
 
+/**
+ * functia care autentifica prin google cu googleProvider
+ */
 export const signInWithGoogle = function() {
   // De asemenea, avem nevoie de signInWithPopup, caruia ii pasam providerul dorit.
   // signInWithPopup nu e singura varianta, va sfatuiesc sa va uitati putin prin
   // documentatia firebase auth pentru web(link pe platforma).
   return firebase.auth().signInWithPopup(googleProvider);
+}
+
+/**
+ * functia care autentifica prin fb cu facebookProvider
+ */
+export const signInWithFacebook = function() {
+  return firebase.auth().signInWithPopup(facebookProvider);
 }

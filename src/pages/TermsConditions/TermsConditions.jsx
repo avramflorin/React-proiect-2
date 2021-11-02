@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout/Layout';
 
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
@@ -37,7 +37,7 @@ class TermsConditions extends React.Component {
     if(ok === 1) {
       this.cookies.set('cookie_ok', '1', {path: '/'});
     }
-    console.log(ok);
+   //  console.log(ok);
   }
 
   /**

@@ -1,8 +1,8 @@
 import {Link} from 'react-router-dom';
 
-import {ReactComponent as EmailIcon} from '../assets/icons/mail.svg';
-import {ReactComponent as PhoneIcon} from '../assets/icons/phone.svg';
-import {ReactComponent as LinkedinIcon} from '../assets/icons/linkedin.svg';
+import {ReactComponent as EmailIcon} from '../../assets/icons/mail.svg';
+import {ReactComponent as PhoneIcon} from '../../assets/icons/phone.svg';
+import {ReactComponent as LinkedinIcon} from '../../assets/icons/linkedin.svg';
 
 import './Footer.css';
 

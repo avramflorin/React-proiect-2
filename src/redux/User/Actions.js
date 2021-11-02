@@ -1,21 +1,22 @@
-import {signInWithGoogle, signOut} from '../../apis/firebase';
+import {signInWithGoogle, signInWithFacebook, signOut} from '../../apis/firebase';
+import Actions from './Constants';
 
 export function startLoading() {
   return {
-    type: 'START_LOADING',
+    type: Actions.START_LOADING,
   }
 }
 
 export function updateData(payload) {
   return {
-    type: 'UPDATE_DATA',
+    type: Actions.UPDATE_DATA,
     payload
   }
 }
 
 export function updateError(payload) {
   return {
-    type: 'UPDATE_ERROR',
+    type: Actions.UPDATE_ERROR,
     payload
   }
 }
@@ -28,6 +29,21 @@ export function signInWithGooleAction() {
     dispatch(startLoading());
 
     signInWithGoogle()
+      .then((result)=>{
+        const userData = result.user;
+        dispatch(updateData(userData));
+      })
+      .catch((error)=>{
+        dispatch(updateError(error));
+      });
+  }
+}
+
+export function signInWithFbAction() {
+  return function (dispatch) {
+    dispatch(startLoading());
+
+    signInWithFacebook()
       .then((result)=>{
         const userData = result.user;
         dispatch(updateData(userData));

@@ -11,7 +11,7 @@
 # production
 /build
 
-# /src/config/firebaseConfig.js
+/src/configs/firebase.js
 
 
 # misc

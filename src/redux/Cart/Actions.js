@@ -1,6 +1,8 @@
+import Actions from './Constants';
+
 const addToCart = function(payload) {
   return ({
-    type: 'post',
+    type: Actions.post,
     payload
   });
 }

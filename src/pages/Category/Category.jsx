@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import ProductList from '../components/ProductList';
-import BaseListSideBar from '../components/BaseListSideBar';
+import Layout from '../../components/Layout/Layout';
+import ProductList from '../../components/ProductList/ProductList';
+import BaseListSideBar from '../../components/BaseListSideBar/BaseListSideBar';
 
-import products from '../utils/products.json';
+import products from '../../utils/products.json';
 import './Category.css';
 
 let filtersNo = 3;  // in cate filtre se impart
@@ -82,7 +82,7 @@ class Category extends React.Component {
         return found;
       });
 
-      console.log(activeFilters);
+      //console.log(activeFilters);
       this.setState({
         categoryItems: activeFilters ? categoryItems : this.state.category.items, 
         refresh: false

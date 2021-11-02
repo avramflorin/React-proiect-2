@@ -1,8 +1,10 @@
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout/Layout';
 import {connect} from 'react-redux';
 
-import {ReactComponent as Delete} from '../assets/icons/trash.svg';
+import {ReactComponent as Delete} from '../../assets/icons/trash.svg';
 import './Cart.css';
+
+import cartActions from '../../redux/Cart/Constants'; 
 
 const Cart = function(props) {
   let quantOptions = [1,2,3,4,5,6,7,8,9,10];
@@ -65,11 +67,11 @@ const mapStateToProps = function(state) {
 const mapDispatchToProps = function(dispatch) {
   return {
     editQuant: (payload) => dispatch({
-      type: 'patch',
+      type: cartActions.patch,
       payload
     }),
     deleteItem: (payload) => dispatch({
-      type: 'delete',
+      type: cartActions.delete,
       payload
     })
   }

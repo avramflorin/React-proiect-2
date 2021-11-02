@@ -2,14 +2,15 @@ import './App.css';
 import React from 'react';
 
 import {Switch, Route} from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Category from "./pages/Category";
-import Cart from "./pages/Cart";
-import Login from "./pages/Login";
-import Page404 from "./pages/Page404";
-import TermsConditions from "./pages/TermsConditions";
-import Product from './pages/Product';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Category from './pages/Category/Category';
+import Cart from './pages/Cart/Cart';
+import Favorites from './pages/Favorites/Favorites';
+import Login from './pages/Login/Login';
+import Page404 from './pages/Page404/Page404';
+import TermsConditions from './pages/TermsConditions/TermsConditions';
+import Product from './pages/Product/Product';
 //  import "./utils/utility-classes.css"; // am mutat totul in App.css
 
 
@@ -32,6 +33,7 @@ class App extends React.Component {
         <Route path="/about" component={About} />
         <Route path="/tc" component={TermsConditions} />
         <Route path="/cart" component={Cart} />
+        <Route path="/favorites" component={Favorites} />
         {/* <Route path="/login">
           <Login  signInWithGoogle={this.props.signInWithGoogle} />
         </Route> */}
